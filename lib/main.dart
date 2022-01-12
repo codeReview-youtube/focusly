@@ -72,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late Qoute _randomQoute;
   final String _name = 'Sam';
   late String _message;
+  late String _title;
   final _titleController = TextEditingController();
   bool _showCompleted = false;
   bool _showAll = false;
@@ -115,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _message = getGreetingMessage();
     // getTime
     _timeString = formatedDateTime(DateTime.now());
-    Timer.periodic(const Duration(seconds: 1), (timer) => _getTime());
+    Timer.periodic(const Duration(minutes: 1), (timer) => _getTime());
     super.initState();
   }
 
@@ -207,6 +208,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(
                     fontSize: isWideScreen() ? 30.0 : 20.0,
                   ),
+                  onChanged: (value) {
+                    setState(() {
+                      _title = value;
+                    });
+                  },
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
                     focusedBorder: UnderlineInputBorder(
